@@ -171,8 +171,6 @@ var zapLogLevel = map[string]zapcore.Level{
 
 func defaultConfigPath() (cfgPath string) {
 	switch runtime.GOOS {
-	case "windows":
-		cfgPath = "config/"
 	case "darwin":
 		if _, err := os.Stat("/usr/local/var/mobius/config/"); err == nil {
 			cfgPath = "/usr/local/var/mobius/config/"
@@ -182,7 +180,7 @@ func defaultConfigPath() (cfgPath string) {
 	case "linux":
 		cfgPath = "/usr/local/var/mobius/config/"
 	default:
-		cfgPath = "./config/"
+		cfgPath = "config/"
 	}
 
 	return cfgPath
