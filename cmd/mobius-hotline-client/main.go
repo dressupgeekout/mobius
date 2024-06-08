@@ -69,8 +69,6 @@ func main() {
 
 func defaultConfigPath() (cfgPath string) {
 	switch runtime.GOOS {
-	case "windows":
-		cfgPath = "mobius-client-config.yaml"
 	case "darwin":
 		if _, err := os.Stat("/usr/local/etc/mobius-client-config.yaml"); err == nil {
 			cfgPath = "/usr/local/etc/mobius-client-config.yaml"
@@ -80,7 +78,7 @@ func defaultConfigPath() (cfgPath string) {
 	case "linux":
 		cfgPath = "/usr/local/etc/mobius-client-config.yaml"
 	default:
-		fmt.Printf("unsupported OS")
+		cfgPath = "mobius-client-config.yaml"
 	}
 
 	return cfgPath
